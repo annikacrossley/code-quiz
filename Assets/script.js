@@ -1,17 +1,19 @@
 var startButton = document.querySelector(".start-btn");
-var questionText = document.querySelector(".question-content");
+var questionText = document.querySelector(".quiz-content");
 
 var question = "";
 var isCorrect = false;
 var timer;
 var timerCount;
 
-//Arrays used to create questions and multiple choice answers on screen
-var question = [];
-var answerChoices = [];
+//Array of quiz questions & answers
+var quizQuestions = [
+    "What are the names of Annika's dogs?",
+    "Who is Annika's favorite singer?",
+    "What is Annika's current occupation?",
+];
 
-//Array of quiz questions
-var questions = ["What are the names of Annika's dogs?", "Who is Annika's favorite singer?", "What is Annika's current profession?"];
+var answerChoices = ["a", "b", "c"]
 
 //When I click the start button, a timer starts and a question appears
 function startQuiz() {
@@ -22,23 +24,31 @@ function startQuiz() {
    startTimer();
 }
 
+//Arrays used to create questions and multiple choice answers on screen
+var outputQuestion = [];
+var answerChoices = [];
+
 function quizQuestion() {
-    
+    for(var i = 0; i < quizQuestions.length; i++) {
+        question = quizQuestions[i];
+        questionText.textContent = question;
+    }
 }
 
 var timerCount = 30;
 var timerElement = document.querySelector(".timer");
-var timer = setInterval(startTimer, 1000);
 
 function startTimer() {
-    if (timerCount == 0) {
-        clearTimeout(timer);
-        endQuiz();
-    }
-    else {
-        timerElement.innerHTML = "Time Remaining: " + timerCount;
-        timerCount --;
-    }
+    var timer = setInterval(function() {
+        if (timerCount == -1) {
+            clearTimeout(timer);
+            endQuiz();
+        }
+        else {
+            timerElement.innerHTML = "Time Remaining: " + timerCount;
+            timerCount --;
+        }
+    }, 1000)
 }
 
 function endQuiz() {
