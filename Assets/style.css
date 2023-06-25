@@ -1,5 +1,13 @@
 * {
     box-sizing: border-box;
+    background-color: lavender;
+    color: darkorchid;
+    font-size: 20px;
+}
+
+:root {
+    --text: darkorchid;
+    font-family: sans-serif;
 }
 
 header {
@@ -8,10 +16,22 @@ header {
     justify-content: space-between;
 }
 
-.timer {
+h1 {
+    font-size: 35px;
+}
+
+.timer, .score-btn {
     display: flex;
     flex-direction: row;
-    font-size: 14px;
+    margin: 30px;
+    font-weight: bold;
+}
+
+button {
+    border-color: var(--text);
+    border-radius: 5px;
+    border-width: 3px;
+    max-height: 35px;
 }
 
 .quiz, h1 {
@@ -19,13 +39,28 @@ header {
     text-align: center;
 }
 
-.start-btn, .score-btn {
-    max-width: 150px;
-}
-
 .choices {
     align-items: center;
     list-style: none;
+}
+
+.a, .b, .c {
+    margin: 10px;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+th, td {
+    text-align: center;
+    padding: 10px;
+}
+
+th {
+    font-size: 24px;
 }
 
 @media (max-width: 800px) {

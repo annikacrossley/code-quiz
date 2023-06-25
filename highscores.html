@@ -12,7 +12,7 @@
          </header> 
     <h1>Coding Quiz Challenge</h1>
     <main>
-        <table>
+        <table id="score-table">
             <thead>
                 <tr>
                     <th>Username</th>
@@ -25,7 +25,7 @@
         </table>
     </main>
     <script>
-         var storedScores = JSON.parse(localStorage.getItem("dashboard")) || []
+         var storedScores = JSON.parse(localStorage.getItem("scoreboard")) || []
          var tableHtml = ""
          for(i=0; i < storedScores.length; i++){
             tableHtml += `
