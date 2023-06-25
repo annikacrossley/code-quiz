@@ -24,3 +24,4 @@ WHEN the game is over
 THEN I can save my initials and my score
 ```
 
+<img src="screen-shot.png" alt="screen shot of webpage">
