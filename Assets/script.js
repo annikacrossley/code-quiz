@@ -17,9 +17,9 @@ var timerElement = document.querySelector(".timer");
 var timer;
 var timerCount;
 function startTimer() {
-    var timer = setInterval(function() {
+     timer = setInterval(function() {
         if (timerCount == -1) {
-            clearTimeout(timer);
+          
             endQuiz();
         }
         else {
@@ -51,7 +51,7 @@ var quiz = [
 //Display first question
     //Replace start quiz instruction w/ question - done 
     //Reveal answer choice buttons - done
-    //Add answer choice text in A/B/C buttons 
+    //Add answer choice text in A/B/C buttons - done
 //When I answer a question, I am given another question    
     //Add eventListener to each answer choice button
     //Move to next question when an answer button has been clicked
@@ -62,16 +62,38 @@ var optiona = document.querySelector(".a")
 var optionb = document.querySelector(".b")
 var optionc = document.querySelector(".c")
 var question = "";
+optiona.addEventListener("click", checkAnswer)
+optionb.addEventListener("click", checkAnswer)
+optionc.addEventListener("click", checkAnswer)
+
+var currentQuestion = 0
+var score = 0
 
 function askQuestion() {
     question = questionText.textContent;
-    questionText.textContent = quiz[0].question;
-    optiona.textContent=quiz[0].choices[0];
-    optionb.textContent=quiz[0].choices[1];
-    optionc.textContent=quiz[0].choices[2];
-    console.log(quiz[0].question)
-    console.log(quiz[0].choices)
-    console.log(quiz[0].answer)
+    questionText.textContent = quiz[currentQuestion].question;
+    optiona.textContent=quiz[currentQuestion].choices[0];
+    optionb.textContent=quiz[currentQuestion].choices[1];
+    optionc.textContent=quiz[currentQuestion].choices[2];
+    console.log(quiz[currentQuestion].question)
+    console.log(quiz[currentQuestion].choices)
+    console.log(quiz[currentQuestion].answer)
+}
+
+function checkAnswer(event) {
+    var userSelection = event.target.textContent;
+    console.log(userSelection)
+    if(userSelection === quiz[currentQuestion].answer){
+        score +=5
+    }else{
+        timerCount -=5
+    }
+    if(currentQuestion < quiz.length-1 ){
+        currentQuestion++
+        askQuestion()
+    }else{
+        endQuiz()
+    }
 }
 
 //When I answer wrong, time subtracts from the clock
@@ -81,7 +103,10 @@ function askQuestion() {
 
 //When the quiz is done or the timer runs out, the quiz is over
 function endQuiz() {
-
+    clearInterval(timer);
+    console.log(score)
+    choices.style.visibility = 'hidden';
+    questionText.textContent = "Final Score: " + (timerCount + score)
 }
 
 //When the quiz is over, I can save my initials and score.
