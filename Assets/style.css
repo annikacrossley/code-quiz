@@ -14,7 +14,7 @@ header {
     font-size: 14px;
 }
 
-.quiz {
+.quiz, h1 {
     display: block;
     text-align: center;
 }
@@ -23,7 +23,7 @@ header {
     max-width: 150px;
 }
 
-.answer-list {
+.choices {
     align-items: center;
     list-style: none;
 }
