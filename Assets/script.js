@@ -38,9 +38,9 @@ var quizAnswerA = ["Teague & Biscuit", "Harry Styles", "Dietitian"]
 var quizAnswerB = ["Biscuit & Suki", "Taylor Swift", "Engineer"]
 var quizAnswerC = ["Suki & Teague", "Ariana Grande", "Teacher"]
 
+//When I answer a question, I am given another question
 var questionText = document.querySelector(".quiz-content");
 var question = "";
-
 function askQuestion() {
     for(var i = 0; i < quizQuestions.length; i++) {
         question = quizQuestions[i];
@@ -49,17 +49,13 @@ function askQuestion() {
     }
 }
 
+//When I answer wrong, time subtracts from the clock
+
+//When the quiz is done or the timer runs out, the quiz is over
 function endQuiz() {
 
 }
 
-startButton.addEventListener("click", startQuiz);
-
-//When I answer a question, I am given another question
-
-
-//When I answer wrong, time subtracts from the clock
-
-//When the quiz is done or the timer runs out, the quiz is over
-
 //When the quiz is over, I can save my initials and score.
+
+startButton.addEventListener("click", startQuiz);
