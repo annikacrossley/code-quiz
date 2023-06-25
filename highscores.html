@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HighScores-CodeQuiz</title>
+    <link rel="stylesheet" href="Assets/style.css">
+</head>
+<body>
+    <header>
+        <button class="score-btn"><a href="./index.html">Retake Quiz</a></button>
+         </header> 
+    <h1>Coding Quiz Challenge</h1>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody id="score-display">
+
+            </tbody>
+        </table>
+    </main>
+    <script>
+         var storedScores = JSON.parse(localStorage.getItem("dashboard")) || []
+         var tableHtml = ""
+         for(i=0; i < storedScores.length; i++){
+            tableHtml += `
+            <tr>
+                <td>${storedScores[i].user}</td>
+                <td>${storedScores[i].score}</td>
+                </tr>
+            `
+         }
+         //template literals
+         document.getElementById("score-display").innerHTML = tableHtml
+    </script>
+</body>
+</html>

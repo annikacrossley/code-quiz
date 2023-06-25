@@ -125,5 +125,6 @@ saveButton.addEventListener("click", function(){
         user:userName, score: (timerCount+score)
     })
     localStorage.setItem("dashboard", JSON.stringify(storedScores))
+    saveScore.innerText = "Scores saved to dashboard. Click on View HighScores"
 } )
 startButton.addEventListener("click", startQuiz);
