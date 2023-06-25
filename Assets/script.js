@@ -51,9 +51,10 @@ var quiz = [
 //When I answer a question, I am given another question
 var questionText = document.querySelector(".quiz");
 var question = "";
+
 function askQuestion() {
-  //  question = questionText.textContent;
-    // questionText.textContent = quiz[0]
+    question = questionText.textContent;
+    questionText.textContent = quiz[0].question;
    console.log(quiz[0].question)
    console.log(quiz[0].choices)
    console.log(quiz[0].answer)
