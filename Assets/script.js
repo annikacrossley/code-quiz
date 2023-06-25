@@ -62,12 +62,17 @@ var optiona = document.querySelector(".a")
 var optionb = document.querySelector(".b")
 var optionc = document.querySelector(".c")
 var question = "";
+var rightWrong = document.querySelector(".right-wrong")
 optiona.addEventListener("click", checkAnswer)
 optionb.addEventListener("click", checkAnswer)
 optionc.addEventListener("click", checkAnswer)
 
 var currentQuestion = 0
 var score = 0
+
+var saveScore = document.getElementById("scores")
+saveScore.style.visibility = 'hidden'
+var saveButton = document.getElementById("saveUsername")
 
 function askQuestion() {
     question = questionText.textContent;
@@ -85,8 +90,10 @@ function checkAnswer(event) {
     console.log(userSelection)
     if(userSelection === quiz[currentQuestion].answer){
         score +=5
+        rightWrong.textContent = "You got it right!"
     }else{
         timerCount -=5
+        rightWrong.textContent = "Incorrect"
     }
     if(currentQuestion < quiz.length-1 ){
         currentQuestion++
@@ -107,8 +114,16 @@ function endQuiz() {
     console.log(score)
     choices.style.visibility = 'hidden';
     questionText.textContent = "Final Score: " + (timerCount + score)
+    saveScore.style.visibility = 'visible'
 }
 
 //When the quiz is over, I can save my initials and score.
-
+saveButton.addEventListener("click", function(){
+    var userName = document.getElementById("username").value
+    var storedScores = JSON.parse(localStorage.getItem("dashboard")) || []
+    storedScores.push({
+        user:userName, score: (timerCount+score)
+    })
+    localStorage.setItem("dashboard", JSON.stringify(storedScores))
+} )
 startButton.addEventListener("click", startQuiz);
