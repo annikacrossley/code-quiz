@@ -23,6 +23,11 @@ header {
     max-width: 150px;
 }
 
+.answer-list {
+    align-items: center;
+    list-style: none;
+}
+
 @media (max-width: 800px) {
     header {
         flex-direction: column;
